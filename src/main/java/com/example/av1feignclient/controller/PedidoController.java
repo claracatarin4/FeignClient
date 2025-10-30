@@ -11,21 +11,19 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping(name="/pedido")
-
+@RequestMapping("/api/pedido")
 public class PedidoController {
     @Autowired
     private PedidoService pedidoService;
 
-
-    @PostMapping("/criarPedido")
-    public ResponseEntity<PedidoResponse> criarPedido(@RequestBody PedidoRequest request){
+    @PostMapping("/criar")
+    public ResponseEntity<PedidoResponse> criarPedido(@RequestBody PedidoRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(pedidoService.criarPedido(request));
     }
-    @GetMapping("/listar/{usuarioId}")
-    public ResponseEntity<List<PedidoResponse>> criarTransacao(@PathVariable("usuarioId") Integer usuarioId) {
-        return ResponseEntity.ok(pedidoService.listarPedidosporUsuarioId(usuarioId));
-    }
 
+    @GetMapping("/por-usuario")
+    public ResponseEntity<List<PedidoResponse>> listarPedidosPorUsuario(@RequestParam("usuarioId") Integer usuarioId) {
+        return ResponseEntity.ok(pedidoService.listarPedidosPorUsuarioId(usuarioId));
+    }
 
 }

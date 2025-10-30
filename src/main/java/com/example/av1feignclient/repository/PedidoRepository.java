@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido,Integer> {
-    @PostMapping("/api/pedido/criar")
-    PedidoResponse salvarPedido(PedidoRequest request);
-    @Query("SELECT p FROM Pedido p WHERE p.usuarioId = :usuarioId")
-    List<Pedido> ListarTodos(@Param("usuarioId") Integer usuarioId);
+    List<Pedido> findByUsuarioId(Integer usuarioId);
 
 }
