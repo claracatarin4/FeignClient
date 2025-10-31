@@ -7,7 +7,8 @@ public class PedidoRequest {
 
     private LocalDate data;
     private BigDecimal valorTotal;
-    private String nomeUsuario;
+    private Integer status;
+    private UsuarioCadastroRequest request;
 
     public LocalDate getData() {
         return data;
@@ -25,11 +26,19 @@ public class PedidoRequest {
         this.valorTotal = valorTotal;
     }
 
-    public String getNomeUsuario() {
-        return nomeUsuario;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setNomeUsuario(String nomeUsuario) {
-        this.nomeUsuario = nomeUsuario;
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public UsuarioCadastroRequest getUsuario() {
+        return request;
+    }
+
+    public void setUsuario(UsuarioCadastroRequest request) {
+        this.request = request;
     }
 }

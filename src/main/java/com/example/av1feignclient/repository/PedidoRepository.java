@@ -8,11 +8,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido,Integer> {
-    List<Pedido> findByUsuarioId(Integer usuarioId);
+    @Query("SELECT p FROM Pedido p WHERE p.usuarioId = :id")
+    List<Pedido> retornarPedidoPorId(@Param("id") Integer id);
 
 }

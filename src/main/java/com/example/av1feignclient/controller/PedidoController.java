@@ -17,12 +17,12 @@ public class PedidoController {
     private PedidoService pedidoService;
 
     @PostMapping("/criar")
-    public ResponseEntity<PedidoResponse> criarPedido(@RequestBody PedidoRequest request) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(pedidoService.criarPedido(request));
+    public ResponseEntity<PedidoResponse> criarPedido(@RequestBody PedidoRequest pedidoRequest){
+        return ResponseEntity.status(HttpStatus.CREATED).body(pedidoService.criarPedido(pedidoRequest));
     }
 
-    @GetMapping("/por-usuario")
-    public ResponseEntity<List<PedidoResponse>> listarPedidosPorUsuario(@RequestParam("usuarioId") Integer usuarioId) {
+    @GetMapping("/porUsuario/{id}")
+    public ResponseEntity<List<PedidoResponse>> listarPedidosPorUsuario(@PathVariable("id") Integer usuarioId) {
         return ResponseEntity.ok(pedidoService.listarPedidosPorUsuarioId(usuarioId));
     }
 
